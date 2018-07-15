@@ -1,0 +1,1 @@
+json.partial! @ark, partial: 'ark', as: :ark

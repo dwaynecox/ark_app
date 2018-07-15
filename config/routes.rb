@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/arks' => 'arks#index'
-
+    get '/arks/:id' => 'arks#show'
   end
   
   post "/users" => "users#create"
