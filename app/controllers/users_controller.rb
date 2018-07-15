@@ -26,4 +26,47 @@ class UsersController < ApplicationController
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end 
+
+  def show
+    user_id = params[:id]
+    @user = User.find(user_id)
+    render 'show.json.jbuilder'
+  end
+
+  def update
+    #temp   # current_user = true
+
+    if current_user || current_user.admin
+      user_id = params[:id]
+      @user = User.find(user_id)
+
+      @user.first_name = params[:first_name] || @user.first_name
+      @user.last_name = params[:last_name] || @user.last_name
+      @user.email = params[:email] || @user.email
+      @user.image = params[:image] || @user.image
+       
+      if @user.save
+       render 'show.json.jbuilder'
+       else
+         render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+      end
+    else
+      render json: {}, status: :unauthorized 
+    end
+  end
+
+  def destroy  #not sure I want to destroy given audit reporting, perhaps figure code for soft delete... 
+
+    # current_user = true
+
+    if current_user || current_user.admin
+      user_id = params[:id]
+      @user = User.find(user_id)
+      @user.destroy
+      render json: {message: "user successfully destroyed"}
+    else
+      render json: {}, status: :unauthorized 
+    end
+  end
+
 end
