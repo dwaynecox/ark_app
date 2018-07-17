@@ -1,12 +1,20 @@
 require 'unirest'
 
+# update dollar
 params = {
- image: "http://dekalbcounty.org/RNC/photos/05.jpg"
+ serial_num: "L12345678B"
 }
 
-response = Unirest.patch("http://localhost:3000/api/arks/1", parameters: params).body
+response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: params).body
 
 #update ark
+# params = {
+#  image: "http://dekalbcounty.org/RNC/photos/05.jpg"
+# }
+
+# response = Unirest.patch("http://localhost:3000/api/arks/1", parameters: params).body
+
+
 
 #create ark, ark requires dollar to exist, code appropriately later
 

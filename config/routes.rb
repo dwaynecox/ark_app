@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     patch '/arks/:id' => 'arks#update'
     get '/dollars' => 'dollars#index'
     get '/dollars/:id' => 'dollars#show'
+    patch '/dollars/:id' => 'dollars#update' #make invisible to non admim
 
   end
   
