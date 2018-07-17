@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     get '/dollars' => 'dollars#index'
     get '/dollars/:id' => 'dollars#show'
     patch '/dollars/:id' => 'dollars#update' #make invisible to non admim
-
   end
   
   post "/users" => "users#create"

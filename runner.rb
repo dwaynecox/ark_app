@@ -1,11 +1,11 @@
 require 'unirest'
 
 # update dollar
-params = {
- serial_num: "L12345678B"
-}
+# params = {
+#  serial_num: "L12345678B"
+# }
 
-response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: params).body
+# response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: params).body
 
 #update ark
 # params = {
@@ -30,9 +30,6 @@ response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: para
 # )
 # p response.body
 
-# puts "Enter new email:"
-# email = gets.chomp
-
 # hardcoded for delete worked 07-15-18 and changed current user to true @60 users_controller...
 
 # response = Unirest.delete("http://localhost:3000/users/7").body
@@ -46,34 +43,8 @@ response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: para
 
 
 # # puts "What recipe id would you like to update?"
-# # recipe_id = gets.chomp
+# # recipe_id = gets.chomp  #keeping as chomp reminder
 
-# # params = {
-# #   # title: "Cake!!!",
-# #   chef: "Stephen C",
-# #   ingredients: "Flour, eggs, sugar",
-# #   directions: "Bake",
-# #   prep_time: 45
-# # }
-
-# # response = Unirest.patch("http://localhost:3000/api/recipes/#{recipe_id}", parameters: params).body
-
-# # puts JSON.pretty_generate(response)
-
-
-# puts "What recipe id would you like to destroy?"
-# recipe_id = gets.chomp
-
-# response = Unirest.post(
-#   "http://localhost:3000/users",
-#   parameters: {
-#     name: "Dani",
-#     email: "dani@gmail.com",
-#     password: "123",
-#     password_confirmation: "123"
-#   }
-# )
-# p response.body
 
 
 
