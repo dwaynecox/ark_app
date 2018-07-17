@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post "/arks" => "arks#create"
     patch '/arks/:id' => 'arks#update'
     get '/dollars' => 'dollars#index'
+    get '/dollars/:id' => 'dollars#show'
 
   end
   
