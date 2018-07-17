@@ -1,0 +1,1 @@
+json.partial! @dollar, partial: 'dollar', as: :dollar
