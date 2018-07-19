@@ -6,7 +6,7 @@ var HomePage = {
     return {
       arks: [],
       currentArk: {},
-      message: "Welcome to the ARK of the Whammynet!!!                                                        If you have done or want to do an act of real or random kindness an ARK if you will, you're in the right place! If you'd like a dollar to give to the recipient of your act of kindness to see how your good karma continues...                                                                              MVP will not require this, dollars to be handed out to want to be do gooders...  later... add address ...  TO DO: Button for ARK ideas and display of completed arks... "
+      message: "Welcome to the ARK of the Whammynet!!!                                                        Make the world a better place, enjoy doing a real or random act of kindness! You're in the right place!"
     };
   },
   created: function() {
@@ -101,11 +101,29 @@ var LogoutPage = {
   }
 };
 
+var DollarPage = {
+  template: "#dollar-page",
+  data: function() {
+    return {
+      dollars: []
+    };
+  },
+  created: function() {
+    axios.get("/api/dollars").then(function(response){
+      this.dollars = response.data;
+      console.log(this.dollars);
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 
 
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
+    { path: "/dollars", component: DollarPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/logout", component: LoginPage }

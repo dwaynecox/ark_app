@@ -40,7 +40,7 @@
               <a class="nav-link" href="/#/">Inspiration</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/#/">Dollars</a>
+              <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
           <li class="nav-item">
             <a class="nav-link" href="/#/">F.A.Q.s</a>
@@ -77,10 +77,15 @@
             <div class="card-body">
               <h5 class="card-title">{{ ark.description }}</h5>
             </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ ark.location }}</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ ark.created_at }}</h5>
+            </div>
           </div>      
         </div>
-
-  </div>
+    </div>
 </template>
 
 <template id="signup-page">
@@ -143,4 +148,18 @@
     </div>
 
   </div>
+</template>
+
+<template id="dollar-page">
+  <div class="vue-component">
+    <div class="row">
+          <div v-for="dollar in dollars" class="card col-4">
+            <img class="card-img-top" src="https://previews.123rf.com/images/chudtsankov/chudtsankov1703/chudtsankov170300147/74006241-cartoon-funny-face-with-dollar-eyes-and-smiling-expression-illustration-isolated-on-white-background.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ dollar.serial_num }}</h5>
+            </div>
+          
+          </div>      
+        </div>
+    </div>
 </template>
