@@ -19,8 +19,6 @@ var HomePage = {
   computed: {}
 };
 
-
-
 var SignupPage = {
   template: "#signup-page",
   data: function() {
@@ -79,7 +77,9 @@ var LoginPage = {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          router.push("/");
+          localStorage.setItem("id", response.data.user.id);
+          location.reload();
+          // router.push("/");
         })
         .catch(
           function(error) {
@@ -118,6 +118,77 @@ var DollarPage = {
   computed: {}
 };
 
+var UsersShowPage = 
+{
+  template: "#users-show-page",
+  data: function() 
+  {
+    return{
+      user: {}
+    };
+  },
+  created: function() 
+  {
+      axios.get("/users/" + this.$route.params.id).then(function(response)
+      {
+        this.user = response.data;
+        console.log(this.user);
+      }.bind(this));
+    },
+    methods: 
+    {},
+    computed: {}
+};
+
+// var UsersEditPage = {
+//   template: "#users-edit-page",
+//   data: function() {
+//     return {
+//       first_name: "",
+//       last_name: "",
+//       email: "",
+//       image: "",
+//       password: "",
+//       passwordConfirmation: "",
+//       errors: []
+//     };
+//   },
+//   created: function() {
+//     axios.get("/users/" + this.$route.params.id).then(function(response){
+//       this.first_name = response.data.first_name;
+//       this.last_name = response.data.last_name;
+//       this.email = response.data.email;
+//       this.image = response.data.image;
+//       this.password = response.data.password;
+//       this.passwordConfirmation = response.data.passwordConfirmation;
+
+
+//     }.bind(this));
+//   },
+//   methods: {
+//     submit: function() {
+//       var params = {
+//         first_name: this.first_name,
+//         last_name: this.last_name,
+//         email: this.email,
+//         image: this.image,
+//         password: this.password,
+//         passwordConfirmation: this.passwordConfirmation,
+//         // password and confirmation logic???
+//       };
+//       axios
+//         .patch("/users/" + this.$route.params.id, params)
+//         .then(function(response) {
+//           router.push("/users/" + this.$route.params.id);
+//         }.bind(this))
+//         .catch(
+//           function(error) {
+//             this.errors = error.response.data.errors;
+//           }.bind(this)
+//         );
+//     }
+//   }
+// };
 
 
 var router = new VueRouter({
@@ -126,15 +197,24 @@ var router = new VueRouter({
     { path: "/dollars", component: DollarPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
+    { path: "/users/:id", component: UsersShowPage },
+    // { path: "/users/:id/edit", component: UsersEditPage },
+    // how does edit get to update without client route?
     { path: "/logout", component: LoginPage }
-
   ]
 });
 
 var app = new Vue({
   el: "#vue-app",
   router: router,
+  data: function() 
+  {
+    return {
+      user_id: ""
+    };
+  },
   created: function() {
+    this.user_id = localStorage.getItem("id");
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
