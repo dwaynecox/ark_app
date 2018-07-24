@@ -31,7 +31,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/#/login">Login</a>
             </li>
-            <li class="nav-item" v-if="user_id">
+            <li class="nav-item" v-if="isLoggedIn()">
               <a class="nav-link" v-bind:href="'/#/users/' + user_id">UserZone</a>
             </li>
             <li class="nav-item">
@@ -39,7 +39,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/#/">Inspiration</a>
+              <a class="nav-link" href="/#/inspiration">Inspiration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
@@ -48,7 +48,8 @@
             <a class="nav-link" href="/#/faqs">F.A.Q.s</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/#/contacts">Contact Us :) </a>
+            <p></p>
+            <p></p>
           </li>
           </ul>
         </div>
@@ -61,6 +62,16 @@
       </div>
 
     </div>
+
+    <footer>
+      <div>
+      <p>Posted by: Whammy!</p>
+      <p>
+       <a href="mailto:dwayneedwardcox@gmail.com?Subject=ARK of the Whammynet!" target="_top">Click to contact Whammy... dwayneedwardcox@gmail.com</a>
+      </p>
+      </div>
+    </footer>
+
 </body>
 </html>
 
@@ -172,28 +183,39 @@
  </div>
 </template>
 
-<template id="contacts-page">
+<template id="inspiration-page">
   <div class="vue-component">
-     <p>This is an email link:
-     <a href="mailto:dwayneedwardcox@gmail.com?Subject=ARK of the Whammynet!" target="_top">dwayneedwardcox@gmail.com</a>
-    </p>
-  </div>
+    <div class="row">
+          <img src="http://5mintohealth.com/wp-content/uploads/2017/02/5-Powerful-Reason-Why-Inspiration-Should-Be-A-Part-of-Your-Success.jpg" alt="">
+
+          <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
+
+      <p>{{ inspiration1 }}</p>
+      <br></br>
+
+      <p>{{ inspiration2 }}</p>
+
+      <p>{{ inspiration3 }}</p>
+
+      <p>{{ inspiration4 }}</p>
+          
+   </div>
+ </div>
 </template>
 
 <template id="users-show-page">
   <div class="vue-component">
     <img :src="user.image" alt="">
-      <p>First Name: {{user.first}} </p>
-      <p>Last Name: {{user.last}} </p>
+      <p>First Name: {{user.first_name}} </p>
+      <p>Last Name: {{user.last_name}} </p>
       <p>Email: {{user.email}} </p>
-      <a class="btn btn-primary" v-bind:href="'/#/users/' + user_id + '/edit'">Check Yo' Self</a>
+      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Check Yo' Self</a>
+      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Wreck Yo' Self</a>
   </div>
 </template>
 
-
 <template id="users-edit-page">
   <div class="vue-component">
-
       <h1>Edit User</h1>
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
@@ -216,7 +238,16 @@
         <input type="text" class="form-control" v-model="image">
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-
   </div>
 </template>
 
+<template id="users-delete-page">
+  <div class="vue-component">
+      <h1>Delete Yourself</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+  </div>
+</template>

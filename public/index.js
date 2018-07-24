@@ -80,7 +80,7 @@ var LoginPage = {
           localStorage.setItem("id", response.data.user.id);
           location.reload();
           // this.errors = "Thank you for successfully logging in!"
-          // router.push("/");
+          router.push("/users/"+response.data.user.id);
         })
         .catch(
           function(error) {
@@ -97,8 +97,8 @@ var LogoutPage = {
   template: "<h1>Logout</h1>",
   created: function() {
     axios.defaults.headers.common["Authorization"] = undefined;
+    localStorage.removeItem("id");
     localStorage.removeItem("jwt");
-    user: {};
     router.push("/");
   }
 };
@@ -132,11 +132,15 @@ var FaqsPage = {
   computed: {}
 };
 
-var ContactsPage = {
-  template: "#contacts-page",
+var InspirationPage = {
+  template: "#inspiration-page",
   data: function() {
     return {
-       };
+      inspiration1: "Please sign up at volunteer.org ",
+      inspiration2: "Please help a homeless person with money, food or coffee.",
+      inspiration3: "Please offer to assist a handicapped person in a precarious spot.",
+      inspiration4: "Please offer to mentor someone with your vocational or life experience."
+      };
   },
   methods: {},
   computed: {}
@@ -208,16 +212,61 @@ var UsersEditPage = {
   }
 };
 
+var UsersDeletePage = {
+  template: "#users-delete-page",
+  data: function() {
+    return {
+      first_name: "",
+      last_name: "",
+      email: "",
+      image: "",
+      errors: []
+    };
+  },
+  created: function() {
+    axios.get("/users/" + this.$route.params.id).then(function(response){
+      this.first_name = response.data.first_name;
+      this.last_name = response.data.last_name;
+      this.email = response.data.email;
+      this.image = response.data.image;
+      console.log(this.user);
+    }.bind(this));
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: "softdeleted" + this.email,
+        image: this.image
+        // password and confirmation logic???
+      };
+      axios
+        .patch("/users/" + this.$route.params.id, params)
+        .then(function(response) {
+          router.push("/");
+          console.log(this.user);
+        }.bind(this))
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
     { path: "/dollars", component: DollarPage },
     { path: "/faqs", component: FaqsPage },
-    { path: "/contacts", component: ContactsPage },
+    { path: "/inspiration", component: InspirationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/users/:id", component: UsersShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
+    { path: "/users/:id/delete", component: UsersDeletePage },
     { path: "/logout", component: LogoutPage }
   ]
 });
@@ -237,5 +286,13 @@ var app = new Vue({
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
     }
-  }
+  }, 
+  methods: {
+    isLoggedIn:function(){
+      if (localStorage.getItem("id")){
+        return true;
+      }
+      return false;
+    }
+  },
 });
