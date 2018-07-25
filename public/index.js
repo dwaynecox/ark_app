@@ -120,13 +120,28 @@ var DollarPage = {
   computed: {}
 };
 
+// var DollarsShowPage = {
+//   template: "#dollars-show-page",
+//   data: function() {
+//     return {
+//       dollars: {}
+//     };
+//   },
+//   created: function() {
+//     axios.get("/api/dollars" + this.$route.params.id).then(function(response){
+//       this.dollar = response.data;
+//       console.log(this.dollar);
+//     }.bind(this));
+//   },
+//   methods: {},
+//   computed: {}
+// };
+
 var FaqsPage = {
   template: "#faqs-page",
   data: function() {
     return {
-      question1: "What is this all about?  It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!",
-      question2: "Why did the chicken cross the park?   To get to the other sLide!",
-      question3: "What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Why? sorry you are out of questions :P " };
+     };
   },
   methods: {},
   computed: {}
@@ -136,10 +151,6 @@ var InspirationPage = {
   template: "#inspiration-page",
   data: function() {
     return {
-      inspiration1: "Please sign up at volunteer.org ",
-      inspiration2: "Please help a homeless person with money, food or coffee.",
-      inspiration3: "Please offer to assist a handicapped person in a precarious spot.",
-      inspiration4: "Please offer to mentor someone with your vocational or life experience."
       };
   },
   methods: {},
@@ -265,6 +276,7 @@ var router = new VueRouter({
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/users/:id", component: UsersShowPage },
+    // { path: "/dollars/:id", component: DollarsShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
     { path: "/users/:id/delete", component: UsersDeletePage },
     { path: "/logout", component: LogoutPage }

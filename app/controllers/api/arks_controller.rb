@@ -42,16 +42,16 @@ class Api::ArksController < ApplicationController
       ark_id = params[:id]
       @ark = Ark.find(ark_id)
 
-       @ark.description = params[:description] || @ark.description
-       @ark.user_id = params[:user_id] || @ark.user_id
-       @ark.image = params[:image] || @ark.image
-       @ark.dollar_id = params[:dollar_id] || @ark.dollar_id
+      @ark.description = params[:description] || @ark.description
+      @ark.user_id = params[:user_id] || @ark.user_id
+      @ark.image = params[:image] || @ark.image
+      @ark.dollar_id = params[:dollar_id] || @ark.dollar_id
        
-       if @ark.save
-         render 'show.json.jbuilder'
-       else
-         render json: {errors: @ark.errors.full_messages}, status: :unprocessable_entity
-       end
+      if @ark.save
+        render 'show.json.jbuilder'
+      else
+        render json: {errors: @ark.errors.full_messages}, status: :unprocessable_entity
+      end
     else
       render json: {}, status: :unauthorized 
     end

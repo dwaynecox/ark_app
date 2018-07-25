@@ -37,13 +37,15 @@
             <li class="nav-item">
               <a class="nav-link" href="/#/logout">Logout</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="/#/inspiration">Inspiration</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
+            <!-- <li class="nav-item" v-if="isLoggedIn()">
+              <a class="nav-link" v-bind:href="'/#/dollars/' + dollar.id">DollarZone</a>
+            </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/#/faqs">F.A.Q.s</a>
           </li>
@@ -172,13 +174,21 @@
         </div>
     </div>
 </template>
+<!-- 
+<template id="dollars-show-page">
+  <div class="vue-component">
+      <p>Dollar: {{dollar.serial_num}} </p>
+      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
+  </div>
+</template> -->
 
 <template id="faqs-page">
   <div class="vue-component">
     <div class="row">
-      <p>{{ question1 }}</p>
-      <p>{{ question2 }}</p>
-      <p>{{ question3 }}</p>
+      <p>"Q1: What is this all about?</p> 
+      <p>"It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!"</p>
+      <p>"Q2: Why did the chicken cross the park?   To get to the other sLide!"</p>
+      <p>"Q3: What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery" </p>
    </div>
  </div>
 </template>
@@ -190,14 +200,12 @@
 
           <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
 
-      <p>{{ inspiration1 }}</p>
-      <br></br>
+      <p>Ark1: Please sign up at volunteer.org  </p>
+      <p>Ark2 Please help a homeless person with money, food or coffee.</p>
 
-      <p>{{ inspiration2 }}</p>
+      <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
 
-      <p>{{ inspiration3 }}</p>
-
-      <p>{{ inspiration4 }}</p>
+      <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
           
    </div>
  </div>
@@ -251,3 +259,4 @@
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
   </div>
 </template>
+

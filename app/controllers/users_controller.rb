@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       @user.image = params[:image] || @user.image
        
       if @user.save
-       render 'show.json.jbuilder'
+        render 'show.json.jbuilder'
        else
          render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
       end
@@ -55,10 +55,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy  #not sure I want to destroy given audit reporting, perhaps figure code for soft delete... 
-
-    # current_user = true
-
+  def destroy  #not being called, using update to change the email in public/index.js file to softdelete + email
     if current_user || current_user.admin
       user_id = params[:id]
       @user = User.find(user_id)
