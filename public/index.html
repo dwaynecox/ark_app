@@ -11,10 +11,7 @@
   <!-- bootstrap vs index.css cascades but not sure how to approach -->
 </head>
 <body>
-   
-  
-    <div id="vue-app">
-      
+   <div id="vue-app">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,9 +38,12 @@
               <a class="nav-link" href="/#/inspiration">Inspiration</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/#/arks">Arks</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
-            <!-- <li class="nav-item" v-if="isLoggedIn()">
+           <!--  <li class="nav-item" v-if="isLoggedIn()">
               <a class="nav-link" v-bind:href="'/#/dollars/' + dollar.id">DollarZone</a>
             </li> -->
           <li class="nav-item">
@@ -161,55 +161,6 @@
   </div>
 </template>
 
-<template id="dollar-page">
-  <div class="vue-component">
-    <div class="row">
-          <div v-for="dollar in dollars" class="card col-4">
-            <img class="card-img-top" src="https://previews.123rf.com/images/chudtsankov/chudtsankov1703/chudtsankov170300147/74006241-cartoon-funny-face-with-dollar-eyes-and-smiling-expression-illustration-isolated-on-white-background.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{ dollar.serial_num }}</h5>
-            </div>
-          
-          </div>      
-        </div>
-    </div>
-</template>
-<!-- 
-<template id="dollars-show-page">
-  <div class="vue-component">
-      <p>Dollar: {{dollar.serial_num}} </p>
-      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
-  </div>
-</template> -->
-
-<template id="faqs-page">
-  <div class="vue-component">
-    <div class="row">
-      <p>"Q1: What is this all about?</p> 
-      <p>"It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!"</p>
-      <p>"Q2: Why did the chicken cross the park?   To get to the other sLide!"</p>
-      <p>"Q3: What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery" </p>
-   </div>
- </div>
-</template>
-
-<template id="inspiration-page">
-  <div class="vue-component">
-    <div class="row">
-          <img src="http://5mintohealth.com/wp-content/uploads/2017/02/5-Powerful-Reason-Why-Inspiration-Should-Be-A-Part-of-Your-Success.jpg" alt="">
-
-          <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
-
-      <p>Ark1: Please sign up at volunteer.org  </p>
-      <p>Ark2 Please help a homeless person with money, food or coffee.</p>
-
-      <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
-
-      <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
-          
-   </div>
- </div>
-</template>
 
 <template id="users-show-page">
   <div class="vue-component">
@@ -259,4 +210,83 @@
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
   </div>
 </template>
+<!-- 
+this ark template will be used to be tied to user, the homepage is a true ark index -->
+<template id="ark-page">
+  <div class="vue-component">
+    <div class="row">
+      <div v-for="ark in arks" class="card col-4">
+          <img class="card-img-top" :src="ark.image" alt= "https://metrouk2.files.wordpress.com/2017/12/pri_64054908.jpg?w=748&h=528&crop=1">
+          <div class="card-body">
+             <h5 class="card-title">{{ ark.description }}</h5>
+            <!--  <h5 class="card-title">{{ ark.user_id }}</h5> -->
+              <h5 class="card-title">{{ ark.location }}</h5>
+              <h5 class="card-title">{{ ark.created_at }}</h5>
+              <h5 class="card-title">{{ ark.dollar_id }}</h5>
+            </div>
+          </div>      
+        </div>
+    </div>
+</template>
+
+<template id="dollar-page">
+  <div class="vue-component">
+    <div class="row">
+          <div v-for="dollar in dollars" class="card col-4">
+            <img class="card-img-top" src="https://previews.123rf.com/images/chudtsankov/chudtsankov1703/chudtsankov170300147/74006241-cartoon-funny-face-with-dollar-eyes-and-smiling-expression-illustration-isolated-on-white-background.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ dollar.serial_num }}</h5>
+            </div>
+          
+          </div>      
+        </div>
+    </div>
+</template>
+
+<template id="dollars-show-page">
+  <div class="vue-component">
+    <div v-for="ark in dollar.arks" class="card col-4">
+        <img class="card-img-top" :src="ark.image">
+        <div class="card-body">
+           <h5 class="card-title">{{ ark.description }}</h5>
+            <h5 class="card-title">{{ ark.location }}</h5>
+            <h5 class="card-title">{{ ark.created_at }}</h5>
+            <h5 class="card-title">{{ ark.dollar_id }}</h5>
+          </div>
+        </div>      
+      </div>
+      <p>Dollar: {{dollar.serial_num}} </p>
+      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
+  </div>
+</template>
+
+<template id="faqs-page">
+  <div class="vue-component">
+    <div class="row">
+      <p>"Q1: What is this all about?</p> 
+      <p>"It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!"</p>
+      <p>"Q2: Why did the chicken cross the park?   To get to the other sLide!"</p>
+      <p>"Q3: What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery" </p>
+   </div>
+ </div>
+</template>
+
+<template id="inspiration-page">
+  <div class="vue-component">
+    <div class="row">
+          <img src="http://5mintohealth.com/wp-content/uploads/2017/02/5-Powerful-Reason-Why-Inspiration-Should-Be-A-Part-of-Your-Success.jpg" alt="">
+
+          <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
+
+      <p>Ark1: Please sign up at volunteer.org  </p>
+      <p>Ark2 Please help a homeless person with money, food or coffee.</p>
+
+      <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
+
+      <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
+          
+   </div>
+ </div>
+</template>
+
 

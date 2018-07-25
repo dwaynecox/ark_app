@@ -103,6 +103,25 @@ var LogoutPage = {
   }
 };
 
+
+var ArkPage = {
+  template: "#ark-page",
+  data: function() {
+    return {
+      arks: [],
+      currentArk: {},
+    };
+  },
+  created: function() {
+    axios.get("/api/arks").then(function(response){
+      this.arks = response.data;
+      console.log(this.arks);
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
+
 var DollarPage = {
   template: "#dollar-page",
   data: function() {
@@ -120,22 +139,22 @@ var DollarPage = {
   computed: {}
 };
 
-// var DollarsShowPage = {
-//   template: "#dollars-show-page",
-//   data: function() {
-//     return {
-//       dollars: {}
-//     };
-//   },
-//   created: function() {
-//     axios.get("/api/dollars" + this.$route.params.id).then(function(response){
-//       this.dollar = response.data;
-//       console.log(this.dollar);
-//     }.bind(this));
-//   },
-//   methods: {},
-//   computed: {}
-// };
+var DollarsShowPage = {
+  template: "#dollars-show-page",
+  data: function() {
+    return {
+      dollar: {}
+    };
+  },
+  created: function() {
+    axios.get("/api/dollars/" + this.$route.params.id).then(function(response){
+      this.dollar = response.data;
+      console.log(this.dollar);
+    }.bind(this));
+  },
+  methods: {},
+  computed: {}
+};
 
 var FaqsPage = {
   template: "#faqs-page",
@@ -270,13 +289,14 @@ var UsersDeletePage = {
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
+    { path: "/arks", component: ArkPage },
     { path: "/dollars", component: DollarPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/users/:id", component: UsersShowPage },
-    // { path: "/dollars/:id", component: DollarsShowPage },
+    { path: "/dollars/:id", component: DollarsShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
     { path: "/users/:id/delete", component: UsersDeletePage },
     { path: "/logout", component: LogoutPage }
