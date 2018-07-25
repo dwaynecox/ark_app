@@ -13,7 +13,10 @@ class Api::ArksController < ApplicationController
 
   def create
     #issue with admin code for method = false error, removed shouldn't need to be admin to create ark
-    # current_user = true;
+    current_user = true;
+
+    @dollar = Dollar.create(
+      serial_num: rand.to_s[2..11])
     
     if current_user
       @ark = Ark.new(
@@ -21,8 +24,7 @@ class Api::ArksController < ApplicationController
         user_id: params[:user_id],
         image: params[:image],
         location: params[:location],
-        dollar_id: params[:dollar_id]
-      )
+        dollar_id: @dollar.id)
       
       if @ark.save
         render "show.json.jbuilder"

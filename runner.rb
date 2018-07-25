@@ -16,19 +16,21 @@ require 'unirest'
 
 
 
-#create ark, ark requires dollar to exist, code appropriately later
+#create dollar in console then ark, ark requires dollar to exist, code appropriately later
 
-# response = Unirest.post(
-#   "http://localhost:3000/api/arks",
-#   parameters: {
-#   description: "After being rescued with a dead phone via a car charger for a S9, in a foreign land with no information other than what was in Match.com after visiting 5 stores, Anton at Walgreens was kind and saved my evening and maybe more, as I was able to call my first date, albeit 40 minutes past the 8pm ballpark and a magical evening was had, so my kindness was to go to walgreens site and send a note about how the employee saved me and did so very kindly after several misses at other stores in the area",
-#             user_id: 1,
-#             image: "http://quotesnsmiles.com/wp-content/uploads/2013/07/1.a-drop-of-kindness-picture-quotes.jpg",
-#             location: "online post visit to Walgreens Merrillville, Indiana",
-#             dollar_id: 2
-#   }
-# )
-# p response.body
+
+
+response = Unirest.post(
+  "http://localhost:3000/api/arks",
+  parameters: {
+  description: "Turned around while walking home to hold door for restaurant delivery guy",
+            user_id: 1,
+            image: "",
+            location: "Papa Passeros, Westmont, IL"
+            # dollar_id: 1
+  }
+)
+p response.body
 
 # hardcoded for delete worked 07-15-18 and changed current user to true @60 users_controller...
 
