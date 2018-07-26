@@ -104,8 +104,8 @@ var LogoutPage = {
 };
 
 
-var ArkPage = {
-  template: "#ark-page",
+var ArksIndexPage = {
+  template: "#arks-index-page",
   data: function() {
     return {
       arks: [],
@@ -118,10 +118,32 @@ var ArkPage = {
       console.log(this.arks);
     }.bind(this));
   },
-  methods: {},
-  computed: {}
-};
+  methods: {
+      setCurrentArk: function(ark) {
+        this.currentArk = ark;
+        console.log(this.currentArk);
+        router.push("/arks/" + this.currentArk.id)
+        }
+      },
+    computed: {}
+  };
 
+  var ArksShowPage = {
+    template: "#arks-show-page",
+    data: function() {
+      return {
+        ark: {}
+      };
+    },
+    created: function() {
+      axios.get("/api/arks/" + this.$route.params.id).then(function(response){
+        this.ark = response.data;
+        console.log(this.ark);
+      }.bind(this));
+    },
+    methods: {},
+    computed: {}
+  };
 
 var ArksNewPage = {
   template: "#arks-new-page",
@@ -159,9 +181,8 @@ var ArksNewPage = {
   }
 };
 
-
-var DollarPage = {
-  template: "#dollar-page",
+var DollarsIndexPage = {
+  template: "#dollars-index-page",
   data: function() {
     return {
       dollars: [],
@@ -334,9 +355,10 @@ var UsersDeletePage = {
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
-    { path: "/arks", component: ArkPage },
+    { path: "/arks", component: ArksIndexPage },
+    { path: "/arks/:id", component: ArksShowPage },
     { path: "/arks/new", component: ArksNewPage },
-    { path: "/dollars", component: DollarPage },
+    { path: "/dollars", component: DollarsIndexPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },
     { path: "/signup", component: SignupPage },

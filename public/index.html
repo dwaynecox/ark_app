@@ -210,7 +210,7 @@
 </template>
 <!-- 
 this ark template will be used to be tied to user, the homepage is a true ark index -->
-<template id="ark-page">
+<template id="arks-index-page">
   <div class="vue-component">
     <div class="row">
       <div v-for="ark in arks" class="card col-4">
@@ -220,14 +220,23 @@ this ark template will be used to be tied to user, the homepage is a true ark in
             <!--  <h5 class="card-title">{{ ark.user_id }}</h5> -->
               <h5 class="card-title">{{ ark.location }}</h5>
               <h5 class="card-title">{{ ark.created_at }}</h5>
-              <!-- <h5 class="card-title">{{ ark.dollar_id }}</h5> -->
+              <button type="button" class="btn btn-primary" v-on:click="setCurrentArk(ark)">
+             More Info
+           </button>
             </div>
           </div>      
         </div>
-<!-- 
-<a class="btn btn-primary" v-bind:href="/#/arks/new/">New Ark</a> -->
-
     </div>
+</template>
+
+<template id="arks-show-page">
+  <div class="vue-component">
+    <img :src="ark.image">
+        <p> Description: {{ ark.description }} </p>>
+        <p> Location: {{ ark.location }} </p>>
+        <p> Created: {{ ark.created_at }} </p>>
+        <a class="btn btn-primary" v-bind:href="/#/">Home</a>
+  </div>
 </template>
 
 <template id="arks-new-page">
@@ -256,7 +265,7 @@ this ark template will be used to be tied to user, the homepage is a true ark in
   </div>
 </template>
 
-<template id="dollar-page">
+<template id="dollars-index-page">
   <div class="vue-component">
     <div class="row">
           <div v-for="dollar in dollars" class="card col-4">
