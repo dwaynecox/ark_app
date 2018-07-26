@@ -234,13 +234,14 @@ this ark template will be used to be tied to user, the homepage is a true ark in
             <div class="card-body">
               <h5 class="card-title">{{ dollar.serial_num }}</h5>
             </div>
+            <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
+              More Info
+            </button>
           
           </div>      
         </div>
 
-        <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
-          More Info
-        </button>
+       
 <!--   need to call show page after setting current dollar with the click -->
 
     </div>

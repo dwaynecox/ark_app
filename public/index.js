@@ -140,11 +140,15 @@ var DollarPage = {
     setCurrentDollar: function(dollar) {
       this.currentDollar = dollar;
       console.log(this.currentDollar);
+      router.push("/dollars/" + this.currentDollar.id)
       }
     },
   computed: {}
 };
 
+// a push above  of this route picking up currentDollar id should open the dollars-show-page
+//       "/dollars/:id"
+// syntax?
 
 var DollarsShowPage = {
   template: "#dollars-show-page",
