@@ -21,7 +21,7 @@ class Api::ArksController < ApplicationController
     if current_user
       @ark = Ark.new(
         description: params[:description],
-        user_id: params[:user_id],
+        user_id: current_user,
         image: params[:image],
         location: params[:location],
         dollar_id: @dollar.id)
@@ -47,6 +47,7 @@ class Api::ArksController < ApplicationController
       @ark.description = params[:description] || @ark.description
       @ark.user_id = params[:user_id] || @ark.user_id
       @ark.image = params[:image] || @ark.image
+       @ark.location = params[:location] || @ark.location
       @ark.dollar_id = params[:dollar_id] || @ark.dollar_id
        
       if @ark.save

@@ -122,6 +122,44 @@ var ArkPage = {
   computed: {}
 };
 
+
+var ArksNewPage = {
+  template: "#arks-new-page",
+  data: function() {
+    return {
+      description: "",
+      user_id: "",
+      image: "",
+      location: "",
+      dollar_id: "",
+      image: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        description: this.description,
+        image: this.image,
+        location: this.location
+        // dollar_id: this.dollar_id handled in rails
+        // how to handle user id if this.user_id no bueno
+      };
+      axios
+        .post("/api/arks", params)
+        .then(function(response) {
+          router.push("/");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
+
+
 var DollarPage = {
   template: "#dollar-page",
   data: function() {
@@ -145,10 +183,6 @@ var DollarPage = {
     },
   computed: {}
 };
-
-// a push above  of this route picking up currentDollar id should open the dollars-show-page
-//       "/dollars/:id"
-// syntax?
 
 var DollarsShowPage = {
   template: "#dollars-show-page",
@@ -301,6 +335,7 @@ var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
     { path: "/arks", component: ArkPage },
+    { path: "/arks/new", component: ArksNewPage },
     { path: "/dollars", component: DollarPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },
