@@ -145,6 +145,51 @@ var ArksIndexPage = {
     computed: {}
   };
 
+  var ArksEditPage = {
+    template: "#arks-edit-page",
+    data: function() {
+      return {
+      currentArk: {},
+      description: "",
+      user_id: "",
+      image: "",
+      location: "",
+      dollar_id: "",
+      created_by: "",
+      errors: []
+      };
+    },
+    created: function() {
+      axios.get("/api/arks/" + this.$route.params.id).then(function(response){
+       
+        this.description = response.data.description;
+        this.image = response.data.image;
+        this.location = response.data.location;
+        console.log(this.user);
+      }.bind(this));
+    },
+    methods: {
+      submit: function() {
+        var params = {
+          description: this.description,
+          image: this.image,
+          location: this.location
+        };
+        axios
+          .patch("/api/arks/" + this.$route.params.id, params)
+          .then(function(response) {
+            router.push("/arks/" + this.$route.params.id);
+            console.log(this.ark);
+          }.bind(this))
+          .catch(
+            function(error) {
+              this.errors = error.response.data.errors;
+            }.bind(this)
+          );
+      }
+    }
+  };
+
 var ArksNewPage = {
   template: "#arks-new-page",
   data: function() {
@@ -291,7 +336,6 @@ var UsersEditPage = {
         last_name: this.last_name,
         email: this.email,
         image: this.image
-        // password and confirmation logic???
       };
       axios
         .patch("/users/" + this.$route.params.id, params)
@@ -357,6 +401,7 @@ var router = new VueRouter({
     { path: "/", component: HomePage },
     { path: "/arks", component: ArksIndexPage },
     { path: "/arks/:id", component: ArksShowPage },
+    { path: "/arks/:id/edit", component: ArksEditPage },
     { path: "/arks/new", component: ArksNewPage },
     { path: "/dollars", component: DollarsIndexPage },
     { path: "/faqs", component: FaqsPage },

@@ -45,10 +45,10 @@ class Api::ArksController < ApplicationController
       @ark = Ark.find(ark_id)
 
       @ark.description = params[:description] || @ark.description
-      @ark.user_id = params[:user_id] || @ark.user_id
+      # @ark.user_id = params[:user_id] || @ark.user_id
       @ark.image = params[:image] || @ark.image
        @ark.location = params[:location] || @ark.location
-      @ark.dollar_id = params[:dollar_id] || @ark.dollar_id
+      # @ark.dollar_id = params[:dollar_id] || @ark.dollar_id
        
       if @ark.save
         render 'show.json.jbuilder'
