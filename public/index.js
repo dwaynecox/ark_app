@@ -109,7 +109,7 @@ var ArkPage = {
   data: function() {
     return {
       arks: [],
-      currentArk: {},
+      currentArk: {}
     };
   },
   created: function() {
@@ -126,7 +126,8 @@ var DollarPage = {
   template: "#dollar-page",
   data: function() {
     return {
-      dollars: []
+      dollars: [],
+      currentDollar: {}
     };
   },
   created: function() {
@@ -135,9 +136,15 @@ var DollarPage = {
       console.log(this.dollars);
     }.bind(this));
   },
-  methods: {},
+  methods: {
+    setCurrentDollar: function(dollar) {
+      this.currentDollar = dollar;
+      console.log(this.currentDollar);
+      }
+    },
   computed: {}
 };
+
 
 var DollarsShowPage = {
   template: "#dollars-show-page",

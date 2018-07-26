@@ -16,7 +16,7 @@ require 'unirest'
 
 
 
-#create dollar in console then ark, ark requires dollar to exist, code appropriately later
+#create dollar in rails then ark, ark requires dollar to exist, code appropriately later
 
 
 

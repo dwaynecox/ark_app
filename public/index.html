@@ -43,9 +43,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
-           <!--  <li class="nav-item" v-if="isLoggedIn()">
-              <a class="nav-link" v-bind:href="'/#/dollars/' + dollar.id">DollarZone</a>
-            </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/#/faqs">F.A.Q.s</a>
           </li>
@@ -222,7 +219,7 @@ this ark template will be used to be tied to user, the homepage is a true ark in
             <!--  <h5 class="card-title">{{ ark.user_id }}</h5> -->
               <h5 class="card-title">{{ ark.location }}</h5>
               <h5 class="card-title">{{ ark.created_at }}</h5>
-              <h5 class="card-title">{{ ark.dollar_id }}</h5>
+              <!-- <h5 class="card-title">{{ ark.dollar_id }}</h5> -->
             </div>
           </div>      
         </div>
@@ -240,6 +237,12 @@ this ark template will be used to be tied to user, the homepage is a true ark in
           
           </div>      
         </div>
+
+        <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
+          More Info
+        </button>
+<!--   need to call show page after setting current dollar with the click -->
+
     </div>
 </template>
 
@@ -251,12 +254,14 @@ this ark template will be used to be tied to user, the homepage is a true ark in
            <h5 class="card-title">{{ ark.description }}</h5>
             <h5 class="card-title">{{ ark.location }}</h5>
             <h5 class="card-title">{{ ark.created_at }}</h5>
-            <h5 class="card-title">{{ ark.dollar_id }}</h5>
+<!-- <a class="btn btn-primary" v-bind:href="/#/arks/new/">New Ark</a> -->
+            <!-- <h5 class="card-title">{{ ark.dollar_id }}</h5> -->
         </div>
-  </div> 
-      <p>Dollar: {{ dollar.serial_num }} </p>    
+     </div> 
+    
+     <p>Dollar: {{ dollar.serial_num }} </p>    
       
-      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
+     <a class="btn btn-primary" v-bind:href="/#/">Home</a>
   </div>
 </template>
 
@@ -288,5 +293,3 @@ this ark template will be used to be tied to user, the homepage is a true ark in
    </div>
  </div>
 </template>
-
-
