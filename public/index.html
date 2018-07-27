@@ -43,7 +43,6 @@
             <li class="nav-item" v-if="isLoggedIn()">
               <a class="nav-link" href="/#/arks/new">Build an Ark</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
@@ -80,7 +79,12 @@
 
 <template id="home-page">
   <div class="vue-component">
-    <h1>{{ message }}</h1>
+    <h2>Welcome to the ARK of the Whammynet!</h2>
+    <p>ARK = Act of Random(unfamiliar) or Real(familiar person) Kindness</p>
+    <h4> Make the world a better place with an act of random or real kindness!</h4>
+
+    <h4>Please push my <a class="nav-link" href="/#/signup">Signup</a> button then simply login and then you will magically see an option to Build an Ark... Upon completion kindly log back in and update your ARK! --post MVP---I'll mail you a dollar to pass to your recipient of kindness and who knows how many people will add more kindness to the world by returning to the ARK..."</h4>
+
     <div class="row">
           <div v-for="ark in arks" class="card col-4">
             <img class="card-img-top" :src="ark.image" alt="Card image cap">
@@ -92,8 +96,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ ark.created_at }}</h5>
-            </div>
-          <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   
+            </div> 
           </div>  
 
         </div>
@@ -161,7 +164,6 @@
   </div>
 </template>
 
-
 <template id="users-show-page">
   <div class="vue-component">
     <img :src="user.image" alt="">
@@ -219,31 +221,22 @@
           <img class="card-img-top" :src="ark.image" alt= "">
           <div class="card-body">
              <h5 class="card-title">{{ ark.description }}</h5>
-            <!--  <h5 class="card-title">{{ ark.user_id }}</h5> -->
               <h5 class="card-title">{{ ark.location }}</h5>
               <h5 class="card-title">{{ ark.created_at }}</h5>
               <button type="button" class="btn btn-primary" v-on:click="setCurrentArk(ark)">
              More Info
-           </button>
+             </button>
             </div>
+
           </div>      
         </div>
     </div>
 </template>
 
 
-
-
-
-
 <!-- need to put user show page info on ark show page
 need to put user show page info on dollar show page
-both preferably without a button click -->
-
-
-
-
-
+both preferably without a button click  AND want to only show build an ark if user is logged in-->
 
 
 <template id="arks-show-page">
@@ -252,10 +245,16 @@ both preferably without a button click -->
         <p> Description: {{ ark.description }} </p>>
         <p> Location: {{ ark.location }} </p>>
         <p> Created: {{ ark.created_at }} </p>>
-
-        <a class="btn btn-primary" v-bind:href="'/#/arks/' + ark.id + '/edit'">Improve your ARK</a>
-        <a class="btn btn-primary" v-bind:href="/#/">Home</a>
-        <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>
+  <!--      <li class="nav-item" v-if="isLoggedIn()"> -->
+          <a class="btn btn-primary" v-bind:href="'/#/arks/' + ark.id + '/edit'">Improve your ARK</a>
+<!--         </li>   -->
+        <a class=
+        "btn btn-primary" v-bind:href="/#/">Home</a>
+        <a class="btn btn-primary" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
+<!-- 
+        <li class="nav-item" v-if="isLoggedIn()">
+          <a class="nav-link" href="/#/arks/new">Build an Ark</a>
+        </li> -->
   </div>
 </template>
 
@@ -318,7 +317,17 @@ both preferably without a button click -->
             <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
               More Info
             </button>
-            <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>
+
+            <!-- need to figure out counter logic/syntax
+              // counter: 0 in javascript component
+                <p> {{ counter }} times this dollar has been employed for an Act of Kindness!</p>
+
+               -->
+<!--  <li class="nav-item" v-if="isLoggedIn()">
+              <a class="nav-link" href="/#/arks/new">Build an Ark</a>
+            </li> -->
+<!-- 
+<a class="btn btn-primary" href="/#/arks/new">Build an Ark</a> -->
           </div>      
         </div>
     </div>
@@ -336,7 +345,7 @@ both preferably without a button click -->
         </div>
         <a class="btn btn-primary" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
      </div> 
-     <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   
+<!--      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>    -->
      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
   </div>
 </template>
@@ -348,7 +357,7 @@ both preferably without a button click -->
       <p>"It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!"</p>
       <p>"Q2: Why did the chicken cross the park?   To get to the other sLide!"</p>
       <p>"Q3: What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery" </p>
-      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
+<!--       <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   -->
    </div>
  </div>
 </template>
@@ -366,7 +375,7 @@ both preferably without a button click -->
       <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
 
       <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
-      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
+      <!-- <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   -->
    </div>
  </div>
 </template>

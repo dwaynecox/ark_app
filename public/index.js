@@ -5,8 +5,7 @@ var HomePage = {
   data: function() {
     return {
       arks: [],
-      currentArk: {},
-      message: "Welcome to the ARK of the Whammynet!!!                                                        Make the world a better place with an act of kindness!"
+      currentArk: {}
     };
   },
   created: function() {
