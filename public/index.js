@@ -109,7 +109,8 @@ var ArksIndexPage = {
   data: function() {
     return {
       arks: [],
-      currentArk: {}
+      currentArk: {},
+      user: {}
     };
   },
   created: function() {
@@ -132,7 +133,8 @@ var ArksIndexPage = {
     template: "#arks-show-page",
     data: function() {
       return {
-        ark: {}
+        ark: {},
+        user: {}
       };
     },
     created: function() {
@@ -144,6 +146,8 @@ var ArksIndexPage = {
     methods: {},
     computed: {}
   };
+     
+ 
 
   var ArksEditPage = {
     template: "#arks-edit-page",
@@ -400,7 +404,7 @@ var router = new VueRouter({
     { path: "/arks", component: ArksIndexPage },
     { path: "/arks/new", component: ArksNewPage },
     { path: "/arks/:id", component: ArksShowPage },
-    { path: "/arks/:id/edit", component: ArksEditPage },
+
     { path: "/dollars", component: DollarsIndexPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },
@@ -410,7 +414,8 @@ var router = new VueRouter({
     { path: "/dollars/:id", component: DollarsShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
     { path: "/users/:id/delete", component: UsersDeletePage },
-    { path: "/logout", component: LogoutPage }
+    { path: "/logout", component: LogoutPage },
+    { path: "/arks/:id/edit", component: ArksEditPage }
   ]
 });
 

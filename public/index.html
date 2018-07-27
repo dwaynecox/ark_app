@@ -40,7 +40,10 @@
             <li class="nav-item">
               <a class="nav-link" href="/#/arks">All Arks</a>
             </li>
-            <a class="nav-item" href="/#/arks/new">Build an Ark</a>
+            <li class="nav-item" v-if="isLoggedIn()">
+              <a class="nav-link" href="/#/arks/new">Build an Ark</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="/#/dollars">Dollars</a>
             </li>
@@ -77,10 +80,7 @@
 
 <template id="home-page">
   <div class="vue-component">
-
     <h1>{{ message }}</h1>
-
-
     <div class="row">
           <div v-for="ark in arks" class="card col-4">
             <img class="card-img-top" :src="ark.image" alt="Card image cap">
@@ -93,7 +93,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ ark.created_at }}</h5>
             </div>
-          </div>      
+          <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   
+          </div>  
+
         </div>
     </div>
 </template>
@@ -168,6 +170,7 @@
       <p>Email: {{user.email}} </p>
       <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Check Yo' Self</a>
       <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Wreck Yo' Self</a>
+      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
   </div>
 </template>
 
@@ -228,14 +231,31 @@
     </div>
 </template>
 
+
+
+
+
+
+<!-- need to put user show page info on ark show page
+need to put user show page info on dollar show page
+both preferably without a button click -->
+
+
+
+
+
+
+
 <template id="arks-show-page">
   <div class="vue-component">
     <img :src="ark.image">
         <p> Description: {{ ark.description }} </p>>
         <p> Location: {{ ark.location }} </p>>
         <p> Created: {{ ark.created_at }} </p>>
+
         <a class="btn btn-primary" v-bind:href="'/#/arks/' + ark.id + '/edit'">Improve your ARK</a>
         <a class="btn btn-primary" v-bind:href="/#/">Home</a>
+        <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>
   </div>
 </template>
 
@@ -298,7 +318,7 @@
             <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
               More Info
             </button>
-          
+            <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>
           </div>      
         </div>
     </div>
@@ -312,10 +332,11 @@
            <h5 class="card-title">{{ ark.description }}</h5>
             <h5 class="card-title">{{ ark.location }}</h5>
             <h5 class="card-title">{{ ark.created_at }}</h5>
-  <!--   <a class="btn btn-primary" v-bind:href="/#/arks/new/">New Ark</a> -->
-          </div>
-     </div>  
-     <p>Dollar: {{ dollar.serial_num }} </p>    
+            <p>Dollar: {{ ark.serial_num }} </p>  
+        </div>
+        <a class="btn btn-primary" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
+     </div> 
+     <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   
      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
   </div>
 </template>
@@ -327,6 +348,7 @@
       <p>"It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!"</p>
       <p>"Q2: Why did the chicken cross the park?   To get to the other sLide!"</p>
       <p>"Q3: What in the Mickey Mouse #@$% is a Whammynet?  I like the sound of the Ark of the Covenant, thank you Indiana Jones, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery" </p>
+      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
    </div>
  </div>
 </template>
@@ -344,6 +366,7 @@
       <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
 
       <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
+      <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
    </div>
  </div>
 </template>
