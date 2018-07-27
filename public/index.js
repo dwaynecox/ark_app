@@ -209,8 +209,6 @@ var ArksNewPage = {
         description: this.description,
         image: this.image,
         location: this.location
-        // dollar_id: this.dollar_id handled in rails
-        // how to handle user id if this.user_id no bueno
       };
       axios
         .post("/api/arks", params)
@@ -400,9 +398,9 @@ var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
     { path: "/arks", component: ArksIndexPage },
+    { path: "/arks/new", component: ArksNewPage },
     { path: "/arks/:id", component: ArksShowPage },
     { path: "/arks/:id/edit", component: ArksEditPage },
-    { path: "/arks/new", component: ArksNewPage },
     { path: "/dollars", component: DollarsIndexPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },

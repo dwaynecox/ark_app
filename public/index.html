@@ -242,7 +242,8 @@
 <template id="arks-edit-page">
   <div class="vue-component">
       <h1>Edit Ark</h1>
-      <img :src="currentArk.image">
+ <!-- not displaying image???
+      <img :src="currentArk.image"> -->
       <ul>
         <li class="text-danger" v-for="error in errors">{{ error }}</li>
       </ul>
@@ -264,7 +265,6 @@
 
 <template id="arks-new-page">
   <div class="vue-component">
-
     <div class="container">
       <h1>Please create your own Act of Random/Real Kindness!</h1>
       <ul>
@@ -284,7 +284,6 @@
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
-
   </div>
 </template>
 
@@ -314,12 +313,9 @@
             <h5 class="card-title">{{ ark.location }}</h5>
             <h5 class="card-title">{{ ark.created_at }}</h5>
   <!--   <a class="btn btn-primary" v-bind:href="/#/arks/new/">New Ark</a> -->
-           
-        </div>
-     </div> 
-    
+          </div>
+     </div>  
      <p>Dollar: {{ dollar.serial_num }} </p>    
-      
      <a class="btn btn-primary" v-bind:href="/#/">Home</a>
   </div>
 </template>
@@ -348,7 +344,6 @@
       <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
 
       <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
-          
    </div>
  </div>
 </template>
