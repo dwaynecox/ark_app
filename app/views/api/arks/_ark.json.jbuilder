@@ -5,3 +5,4 @@ json.user_id ark.user_id
 json.image ark.image
 json.location ark.location
 json.dollar_id ark.dollar_id
+json.user ark.user

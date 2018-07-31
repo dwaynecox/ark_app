@@ -12,7 +12,9 @@
 </head>
 <body>
    <div id="vue-app">
+<!--     <nav class="home-nav"> -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -85,17 +87,20 @@
 
     <h4>Please push my <a class="nav-link" href="/#/signup">Signup</a> button then simply login and then you will magically see an option to Build an Ark... Upon completion kindly log back in and update your ARK! --post MVP---I'll mail you a dollar to pass to your recipient of kindness and who knows how many people will add more kindness to the world by returning to the ARK..."</h4>
 
+<a href="https://www.bradaronson.com/acts-of-kindness/">Ark Ideas</a>
+  
+
     <div class="row">
           <div v-for="ark in arks" class="card col-4">
-            <img class="card-img-top" :src="ark.image" alt="Card image cap">
+            <img class="card-img-top" :src="ark.image">
             <div class="card-body">
-              <h5 class="card-title">{{ ark.description }}</h5>
+              <h5 class="card-title">Kindness: {{ ark.description }}</h5>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{ ark.location }}</h5>
+              <h5 class="card-title">Location: {{ ark.location }}</h5>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{ ark.created_at }}</h5>
+              <h5 class="card-title">Ark Created: {{ark.created_at }}</h5>
             </div> 
           </div>  
 
@@ -170,9 +175,10 @@
       <p>First Name: {{user.first_name}} </p>
       <p>Last Name: {{user.last_name}} </p>
       <p>Email: {{user.email}} </p>
-      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Check Yo' Self</a>
+      <a class="btn btn-primary" v-if="user.id == getUserId()" v-bind:href="'/#/users/' + user.id + '/edit'">Check Yo' Self</a>
       <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Wreck Yo' Self</a>
       <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
+      <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
   </div>
 </template>
 
@@ -245,12 +251,16 @@ both preferably without a button click  AND want to only show build an ark if us
         <p> Description: {{ ark.description }} </p>>
         <p> Location: {{ ark.location }} </p>>
         <p> Created: {{ ark.created_at }} </p>>
+        <img :src="ark.user.image">
+        <p> Ark owners first_name: {{ ark.user.first_name }} </p>
+               <p> Last Name: {{ ark.user.last_name }} </p>
+               <p> Email: {{ ark.user.email }} </p>
   <!--      <li class="nav-item" v-if="isLoggedIn()"> -->
-          <a class="btn btn-primary" v-bind:href="'/#/arks/' + ark.id + '/edit'">Improve your ARK</a>
+          <a class="btn btn-primary" v-if="ark.user_id == getUserId()" v-bind:href="'/#/arks/' + ark.id + '/edit'">Improve your ARK</a>
 <!--         </li>   -->
         <a class=
         "btn btn-primary" v-bind:href="/#/">Home</a>
-        <a class="btn btn-primary" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
+     
 <!-- 
         <li class="nav-item" v-if="isLoggedIn()">
           <a class="nav-link" href="/#/arks/new">Build an Ark</a>
@@ -341,7 +351,7 @@ both preferably without a button click  AND want to only show build an ark if us
            <h5 class="card-title">{{ ark.description }}</h5>
             <h5 class="card-title">{{ ark.location }}</h5>
             <h5 class="card-title">{{ ark.created_at }}</h5>
-            <p>Dollar: {{ ark.serial_num }} </p>  
+            <p>Dollar: {{ dollar.serial_num }}</p>  
         </div>
         <a class="btn btn-primary" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
      </div> 
@@ -369,12 +379,15 @@ both preferably without a button click  AND want to only show build an ark if us
 
           <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
 
+          <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
+    
+<!-- 
       <p>Ark1: Please sign up at volunteer.org  </p>
       <p>Ark2 Please help a homeless person with money, food or coffee.</p>
 
       <p>Ark3: Please offer to assist a handicapped person in a precarious spot.</p>
 
-      <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p>
+      <p>Ark4: Please offer to mentor someone with your vocational or life experience.</p> -->
       <!-- <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>   -->
    </div>
  </div>

@@ -76,7 +76,7 @@ var LoginPage = {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          localStorage.setItem("id", response.data.user.id);
+          localStorage.setItem("user_id", response.data.user.id);
           location.reload();
           // this.errors = "Thank you for successfully logging in!"
           router.push("/users/"+response.data.user.id);
@@ -96,7 +96,7 @@ var LogoutPage = {
   template: "<h1>Logout</h1>",
   created: function() {
     axios.defaults.headers.common["Authorization"] = undefined;
-    localStorage.removeItem("id");
+    localStorage.removeItem("user_id");
     localStorage.removeItem("jwt");
     router.push("/");
   }
@@ -142,11 +142,13 @@ var ArksIndexPage = {
         console.log(this.ark);
       }.bind(this));
     },
-    methods: {},
+    methods: {
+      getUserId: function() {
+            return localStorage.getItem("user_id");
+          }
+    },
     computed: {}
   };
-     
- 
 
   var ArksEditPage = {
     template: "#arks-edit-page",
@@ -305,10 +307,13 @@ var UsersShowPage =
         console.log(this.user);
       }.bind(this));
     },
-    methods: 
-    {},
-    computed: {}
-};
+    methods: {
+         getUserId: function() {
+               return localStorage.getItem("user_id");
+             }
+       },
+       computed: {}
+     };
 
 var UsersEditPage = {
   template: "#users-edit-page",
@@ -428,7 +433,7 @@ var app = new Vue({
     };
   },
   created: function() {
-    this.user_id = localStorage.getItem("id");
+    this.user_id = localStorage.getItem("user_id");
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
@@ -436,7 +441,7 @@ var app = new Vue({
   }, 
   methods: {
     isLoggedIn:function(){
-      if (localStorage.getItem("id")){
+      if (localStorage.getItem("user_id")){
         return true;
       }
       return false;

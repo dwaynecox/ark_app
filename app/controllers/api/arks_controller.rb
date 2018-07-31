@@ -12,7 +12,6 @@ class Api::ArksController < ApplicationController
   end 
 
   def create
-    #issue with admin code for method = false error, removed shouldn't need to be admin to create ark
     current_user = true;
 
     @dollar = Dollar.create(
@@ -37,9 +36,6 @@ class Api::ArksController < ApplicationController
   end 
 
   def update
-    #for testing set current_user to true
-    current_user = true 
-
     if current_user
       ark_id = params[:id]
       @ark = Ark.find(ark_id)
