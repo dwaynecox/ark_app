@@ -270,9 +270,13 @@ var DollarsShowPage = {
       console.log(this.dollar);
     }.bind(this));
   },
-  methods: {},
-  computed: {}
-};
+  methods: {
+           getUserId: function() {
+                 return localStorage.getItem("user_id");
+               }
+         },
+         computed: {}
+       };
 
 var FaqsPage = {
   template: "#faqs-page",
