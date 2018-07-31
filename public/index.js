@@ -226,9 +226,9 @@ var ArksNewPage = {
           }.bind(this)
         );
     },
-    // getUserId: function() {
-    //   return localStorage.getItem("user_id");
-    // }
+    getUserId: function() {
+      return localStorage.getItem("user_id");
+    }
   },
 };
 
