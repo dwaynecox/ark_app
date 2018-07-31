@@ -225,9 +225,13 @@ var ArksNewPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    }
-  }
+    },
+    // getUserId: function() {
+    //   return localStorage.getItem("user_id");
+    // }
+  },
 };
+
 
 var DollarsIndexPage = {
   template: "#dollars-index-page",
