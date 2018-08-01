@@ -319,6 +319,7 @@ var UsersShowPage =
          getUserId: function() {
                return localStorage.getItem("user_id");
              }
+             
        },
        computed: {}
      };
