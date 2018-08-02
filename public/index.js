@@ -226,6 +226,7 @@ var ArksNewPage = {
           }.bind(this)
         );
     },
+    
     getUserId: function() {
       return localStorage.getItem("user_id");
     }

@@ -1,6 +1,9 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>join the Ark!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -10,6 +13,7 @@
   <link rel="stylesheet" href="index.css">
   <!-- bootstrap vs index.css cascades but not sure how to approach -->
 </head>
+
 <body>
    <div id="vue-app">
 <!--     <nav class="home-nav"> -->
@@ -76,18 +80,26 @@
       </div>
     </footer>
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>
 
 <template id="home-page">
   <div class="vue-component">
-    <h2>Welcome to the ARK of the Whammynet!</h2>
-    <p>ARK = Act of Random(unfamiliar) or Real(familiar person) Kindness</p>
-    <h4> Make the world a better place with an act of random or real kindness!</h4>
+ <font color="blueviolet"> 
+    <h3>Welcome to the ARK of the Whammynet!</h3> <h6>ARK = Act of Random(unfamiliar) or Real(familiar person) Kindness</h6>
+    <p></p>
+    <h5> Make the world a better place with an act of random or real kindness!</h5>
+    <h5>Please click the<a class="nav-link" href="/#/signup">Signup</a>button</h5> 
+    <h5>then simply login and then you will magically see an option to Build an Ark... </h5> 
+    <p> --post MVP---I'll mail you a dollar to pass to your recipient of kindness and who knows how many people will add more kindness to the world by returning to the ARK and I'll also add a completed field..."</p>
+    
 
-    <h4>Please push my <a class="nav-link" href="/#/signup">Signup</a> button then simply login and then you will magically see an option to Build an Ark... Upon completion kindly log back in and update your ARK! --post MVP---I'll mail you a dollar to pass to your recipient of kindness and who knows how many people will add more kindness to the world by returning to the ARK..."</h4>
-
-<a href="https://www.bradaronson.com/acts-of-kindness/">Ark Ideas</a>
+    <h4><a href="https://www.bradaronson.com/acts-of-kindness/">Ark Ideas</a></h4>
   
 
     <div class="row">
@@ -223,6 +235,7 @@
 <template id="arks-index-page">
   <div class="vue-component">
     <div class="row">
+      <font color="blueviolet"> 
       <div v-for="ark in arks" class="card col-4">
           <img class="card-img-top" :src="ark.image" alt= "">
           <div class="card-body">
@@ -233,8 +246,8 @@
              More Info
              </button>
             </div>
-
-          </div>      
+          </font>   
+          </div> 
         </div>
     </div>
 </template>
@@ -303,6 +316,8 @@ both preferably without a button click  AND want to only show build an ark if us
         <label>location:</label> 
         <input type="text" class="form-control" v-model="location">
       </div>
+      <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
+
       <button class="btn btn-primary" v-if="getUserId()" v-on:click="submit()">Submit</button>
     </div>
   </div>
@@ -345,19 +360,22 @@ both preferably without a button click  AND want to only show build an ark if us
   <div class="vue-component">
     <div class="row">
       <p>Q1: What is this all about?</p> 
-      <p>It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!</p>
-      <p>Q2: Why did the chicken cross the park?   To get to the other sLide!</p>
-      <p>Q3: What in the Mickey Mouse blank is a Whammynet?  I like the sound of the Ark of the Covenant, via Raiders of the Lost Ark, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery...</p>
+      <font color="blueviolet"> 
+      <p>born from the notion of how do we make the world a kinder place... and from the movie Pay It Forward and the internet site, Where's George, I present the ARK of the Whammynet! It's a chance to make the world a better place by signing up to do one act of kindness. You can signup or choose to proceed as a guest and see a list of kindness suggestions. Hopefully you choose to follow thru with the good deed and let us know by logging it on this website.  There is no catch, and you might be surprised how good doing something nice for a random or affiliated person may make you feel!</p></font>
+
+      <p>Q2: What in the Mickey Mouse blank is a Whammynet?</p> 
+      <p><font color="blueviolet">I like the sound of the Ark of the Covenant, via Raiders of the Lost Ark, so Ark of the Whammynet it is!  ARK is from the movie Evan Almighty, (A)ct of (R)andom (K)indness.  Whammy is a nickname of mine ;)  Let's keep that a mystery...</p></font>
    </div>
  </div>
 </template>
 
 <template id="inspiration-page">
   <div class="vue-component">
+    <font color="blueviolet"> 
     <div class="row">
           <img src="http://5mintohealth.com/wp-content/uploads/2017/02/5-Powerful-Reason-Why-Inspiration-Should-Be-A-Part-of-Your-Success.jpg" alt="">
-
-          <h1>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h1>
+ <h3>Welcome to the ARK of the Whammynet!</h3> 
+          <h4>Please find an act of random/real kindness (an A.R.K.) here or feel free to suggest one or just do something kind on your own!</h4>
 
           <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
     
