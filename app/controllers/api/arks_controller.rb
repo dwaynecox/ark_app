@@ -21,6 +21,7 @@ class Api::ArksController < ApplicationController
        user_id: current_user.id,
        image: params[:image],
        location: params[:location],
+       completed: params[:completed],
        dollar_id: @dollar.id)
      
      if @ark.save
@@ -40,7 +41,8 @@ class Api::ArksController < ApplicationController
 
       @ark.description = params[:description] || @ark.description
       @ark.image = params[:image] || @ark.image
-       @ark.location = params[:location] || @ark.location
+      @ark.completed = params[:completed] || @ark.completed
+      @ark.location = params[:location] || @ark.location
      
       if @ark.save
         render 'show.json.jbuilder'

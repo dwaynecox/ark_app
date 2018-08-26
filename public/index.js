@@ -159,6 +159,7 @@ var ArksIndexPage = {
       user_id: "",
       image: "",
       location: "",
+      completed: "",
       dollar_id: "",
       created_by: "",
       errors: []
@@ -170,6 +171,7 @@ var ArksIndexPage = {
         this.description = response.data.description;
         this.image = response.data.image;
         this.location = response.data.location;
+        this.completed = response.data.completed;
         console.log(this.user);
       }.bind(this));
     },
@@ -178,7 +180,8 @@ var ArksIndexPage = {
         var params = {
           description: this.description,
           image: this.image,
-          location: this.location
+          location: this.location,
+          completed: this.completed
         };
         axios
           .patch("/api/arks/" + this.$route.params.id, params)
@@ -203,6 +206,7 @@ var ArksNewPage = {
       user_id: "",
       image: "",
       location: "",
+      completed: "",
       dollar_id: "",
       image: "",
       errors: []
@@ -213,7 +217,8 @@ var ArksNewPage = {
       var params = {
         description: this.description,
         image: this.image,
-        location: this.location
+        location: this.location,
+        completed: this.completed
       };
       axios
         .post("/api/arks", params)

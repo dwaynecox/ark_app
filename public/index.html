@@ -239,9 +239,10 @@
       <div v-for="ark in arks" class="card col-4">
           <img class="card-img-top" :src="ark.image" alt= "">
           <div class="card-body">
-             <h5 class="card-title">{{ ark.description }}</h5>
+             <h5 class="card-title">A.R.K. {{ ark.description }}</h5>
               <h5 class="card-title">{{ ark.location }}</h5>
-              <h5 class="card-title">{{ ark.created_at }}</h5>
+              <h5 class="card-title">Created: {{ ark.created_at }}</h5>
+              <h5 class="card-title">Completed {{ ark.completed }}</h5>
               <button type="button" class="btn btn-primary" v-on:click="setCurrentArk(ark)">
              More Info
              </button>
@@ -262,6 +263,8 @@ both preferably without a button click  AND want to only show build an ark if us
         <p> Description: {{ ark.description }} </p>>
         <p> Location: {{ ark.location }} </p>>
         <p> Created: {{ ark.created_at }} </p>>
+        <p> Completed: {{ ark.completed }} </p>>
+
         <img :src="ark.user.image">
         <p> Ark owners first_name: {{ ark.user.first_name }} </p>
                <p> Last Name: {{ ark.user.last_name }} </p>
@@ -293,6 +296,10 @@ both preferably without a button click  AND want to only show build an ark if us
         <label>Location:</label>
         <input type="email" class="form-control" v-model="location">
       </div>
+      <div class="form-group">
+        <label>Completed:</label>
+        <input type="text" class="form-control" v-model="completed">
+      </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
   </div>
 </template>
@@ -315,6 +322,10 @@ both preferably without a button click  AND want to only show build an ark if us
       <div class="form-group">
         <label>location:</label> 
         <input type="text" class="form-control" v-model="location">
+      </div>
+      <div class="form-group">
+        <label>completed:</label> 
+        <input type="text" class="form-control" v-model="completed">
       </div>
       <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
 
