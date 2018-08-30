@@ -184,8 +184,8 @@
       <p>First Name: {{user.first_name}} </p>
       <p>Last Name: {{user.last_name}} </p>
       <p>Email: {{user.email}} </p>
-      <a class="btn btn-primary" v-if="user.id == getUserId()" v-bind:href="'/#/users/' + user.id + '/edit'">Update you</a>
-      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete you</a>
+      <a class="btn btn-primary" v-if="user.id == getUserId()" v-bind:href="'/#/users/' + user.id + '/edit'">Update</a>
+      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete (soft)</a>
       <a class="btn btn-primary" href="/#/arks/new">Build an Ark</a>  
       <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
   </div>
