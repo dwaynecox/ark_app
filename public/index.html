@@ -96,9 +96,6 @@
     <h5> Make the world a better place with an act of random or real kindness!</h5>
     <h5>Please click the<a class="nav-link" href="/#/signup">Signup</a>button</h5> 
     <h5>then simply login and then you will magically see an option to Build an Ark... </h5> 
-    <p> --post MVP---I'll mail you a dollar to pass to your recipient of kindness and who knows how many people will add more kindness to the world by returning to the ARK and I'll also add a completed field..."</p>
-    
-
     <h4><a href="https://www.bradaronson.com/acts-of-kindness/">Ark Ideas</a></h4>
   
 
@@ -242,7 +239,7 @@
              <h5 class="card-title">A.R.K. {{ ark.description }}</h5>
               <h5 class="card-title">{{ ark.location }}</h5>
               <h5 class="card-title">Created: {{ ark.created_at }}</h5>
-              <h5 class="card-title">Completed {{ ark.completed }}</h5>
+              <h5 class="card-title">Completed: {{ ark.completed }}</h5>
               <button type="button" class="btn btn-primary" v-on:click="setCurrentArk(ark)">
              More Info
              </button>
