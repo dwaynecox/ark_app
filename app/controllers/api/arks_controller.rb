@@ -27,10 +27,10 @@ class Api::ArksController < ApplicationController
       else
         render json: {errors: @ark.errors.full_messages}, status: :unprocessable_entity
       end
-    else 
-     render json: {}, status: :unauthorized
+     else 
+       render json: {}, status: :unauthorized
     end 
- end 
+  end 
 
   def update
     if current_user
