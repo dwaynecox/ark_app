@@ -209,7 +209,6 @@ var ArksNewPage = {
       location: "",
       serial_num: "",
       completed: "",
-      image: "",
       errors: []
     };
   },

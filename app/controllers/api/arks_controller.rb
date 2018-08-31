@@ -13,16 +13,15 @@ class Api::ArksController < ApplicationController
 
   def create 
     if current_user
-    
-     @ark = Ark.new do |a|
-  a.description = params[:description]
-  a.user_id = current_user.id
-  a.image = params[:image]
-  a.serial_num = params[:serial_num]
-  a.location = params[:location]
-  a.completed = params[:completed]
-  
-end
+      @ark = Ark.new(
+       description: params[:description],
+       user_id: current_user.id,
+       image: params[:image],
+       serial_num: params[:serial_num],
+       location: params[:location],
+       completed: params[:completed]
+       )
+     
       if @ark.save
         render "show.json.jbuilder"
       else
