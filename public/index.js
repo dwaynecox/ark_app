@@ -159,18 +159,18 @@ var ArksIndexPage = {
       user_id: "",
       image: "",
       location: "",
+      serial_num: "",
       completed: "",
-      dollar_id: "",
       created_by: "",
       errors: []
       };
     },
     created: function() {
-      axios.get("/api/arks/" + this.$route.params.id).then(function(response){
-       
-        this.description = response.data.description;
+      axios.get("/api/arks/" + this.$route.params.id).then(function(response) {
+       this.description = response.data.description;
         this.image = response.data.image;
         this.location = response.data.location;
+        this.serial_num = response.data.serial_num;
         this.completed = response.data.completed;
         console.log(this.user);
       }.bind(this));
@@ -181,6 +181,7 @@ var ArksIndexPage = {
           description: this.description,
           image: this.image,
           location: this.location,
+          serial_num: this.serial_num,
           completed: this.completed
         };
         axios
@@ -206,8 +207,8 @@ var ArksNewPage = {
       user_id: "",
       image: "",
       location: "",
+      serial_num: "",
       completed: "",
-      dollar_id: "",
       image: "",
       errors: []
     };
@@ -218,6 +219,7 @@ var ArksNewPage = {
         description: this.description,
         image: this.image,
         location: this.location,
+        serial_num: this.serial_num,
         completed: this.completed
       };
       axios
@@ -237,52 +239,6 @@ var ArksNewPage = {
     }
   },
 };
-
-
-var DollarsIndexPage = {
-  template: "#dollars-index-page",
-  data: function() {
-    return {
-      dollars: [],
-      currentDollar: {}
-    };
-  },
-  created: function() {
-    axios.get("/api/dollars").then(function(response){
-      this.dollars = response.data;
-      console.log(this.dollars);
-    }.bind(this));
-  },
-  methods: {
-    setCurrentDollar: function(dollar) {
-      this.currentDollar = dollar;
-      console.log(this.currentDollar);
-      router.push("/dollars/" + this.currentDollar.id)
-      }
-    },
-  computed: {}
-};
-
-var DollarsShowPage = {
-  template: "#dollars-show-page",
-  data: function() {
-    return {
-      dollar: {}
-    };
-  },
-  created: function() {
-    axios.get("/api/dollars/" + this.$route.params.id).then(function(response){
-      this.dollar = response.data;
-      console.log(this.dollar);
-    }.bind(this));
-  },
-  methods: {
-           getUserId: function() {
-                 return localStorage.getItem("user_id");
-               }
-         },
-         computed: {}
-       };
 
 var FaqsPage = {
   template: "#faqs-page",
@@ -423,19 +379,16 @@ var router = new VueRouter({
     { path: "/arks", component: ArksIndexPage },
     { path: "/arks/new", component: ArksNewPage },
     { path: "/arks/:id", component: ArksShowPage },
-
-    { path: "/dollars", component: DollarsIndexPage },
     { path: "/faqs", component: FaqsPage },
     { path: "/inspiration", component: InspirationPage },
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/users/:id", component: UsersShowPage },
-    { path: "/dollars/:id", component: DollarsShowPage },
     { path: "/users/:id/edit", component: UsersEditPage },
     { path: "/users/:id/delete", component: UsersDeletePage },
     { path: "/logout", component: LogoutPage },
     { path: "/arks/:id/edit", component: ArksEditPage }
-  ]
+    ]
 });
 
 var app = new Vue({

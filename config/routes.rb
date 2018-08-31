@@ -6,9 +6,6 @@ Rails.application.routes.draw do
     get '/arks/:id' => 'arks#show'
     post "/arks" => "arks#create"
     patch '/arks/:id' => 'arks#update'
-    get '/dollars' => 'dollars#index'
-    get '/dollars/:id' => 'dollars#show'
-    patch '/dollars/:id' => 'dollars#update' #make invisible to non admim
   end
   
   post "/users" => "users#create"

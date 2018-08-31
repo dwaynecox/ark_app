@@ -1,1 +1,0 @@
-json.array! @dollars, partial: 'dollar', as: :dollar

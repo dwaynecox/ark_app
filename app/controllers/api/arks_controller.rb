@@ -11,27 +11,25 @@ class Api::ArksController < ApplicationController
     render 'show.json.jbuilder'
   end 
 
-  def create
-    @dollar = Dollar.create(
-       serial_num: rand.to_s[2..11])
-     
-   if current_user
-     @ark = Ark.new(
+  def create 
+    if current_user
+      @ark = Ark.new(
        description: params[:description],
        user_id: current_user.id,
        image: params[:image],
        location: params[:location],
-       completed: params[:completed],
-       dollar_id: @dollar.id)
+       serial_num: params[:serial_num],
+       completed: params[:completed]
+       )
      
-     if @ark.save
-       render "show.json.jbuilder"
-     else
-       render json: {errors: @ark.errors.full_messages}, status: :unprocessable_entity
-     end
-   else 
+      if @ark.save
+        render "show.json.jbuilder"
+      else
+        render json: {errors: @ark.errors.full_messages}, status: :unprocessable_entity
+      end
+    else 
      render json: {}, status: :unauthorized
-   end 
+    end 
  end 
 
   def update
@@ -41,6 +39,7 @@ class Api::ArksController < ApplicationController
 
       @ark.description = params[:description] || @ark.description
       @ark.image = params[:image] || @ark.image
+      @ark.serial_num = params[:serial_num] || @ark.serial_num
       @ark.completed = params[:completed] || @ark.completed
       @ark.location = params[:location] || @ark.location
      

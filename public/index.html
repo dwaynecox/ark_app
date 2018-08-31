@@ -49,9 +49,6 @@
             <li class="nav-item" v-if="isLoggedIn()">
               <a class="nav-link" href="/#/arks/new">Build an Ark</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#/dollars">Dollars</a>
-            </li>
           <li class="nav-item">
             <a class="nav-link" href="/#/faqs">F.A.Q.s</a>
           </li>
@@ -107,6 +104,9 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">Location: {{ ark.location }}</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dollar Serial Number: {{ ark.serial_num }}</h5>
             </div>
             <div class="card-body">
               <h5 class="card-title">Ark Created: {{ark.created_at }}</h5>
@@ -239,6 +239,7 @@
              <h5 class="card-title">A.R.K. {{ ark.description }}</h5>
               <h5 class="card-title">{{ ark.location }}</h5>
               <h5 class="card-title">Created: {{ ark.created_at }}</h5>
+              <h5 class="card-title">Dollar Serial Number: {{ ark.serial_num }}</h5>
               <h5 class="card-title">Completed: {{ ark.completed }}</h5>
               <button type="button" class="btn btn-primary" v-on:click="setCurrentArk(ark)">
              More Info
@@ -250,16 +251,13 @@
     </div>
 </template>
 
-<!-- need to put user show page info on ark show page
-need to put user show page info on dollar show page
-both preferably without a button click  AND want to only show build an ark if user is logged in-->
-
 <template id="arks-show-page">
   <div class="vue-component">
     <img :src="ark.image">
         <p> Description: {{ ark.description }} </p>>
         <p> Location: {{ ark.location }} </p>>
         <p> Created: {{ ark.created_at }} </p>>
+        <p> Dollar Serial Number: {{ ark.serial_num }} </p>>
         <p> Completed: {{ ark.completed }} </p>>
 
         <img :src="ark.user.image">
@@ -294,6 +292,10 @@ both preferably without a button click  AND want to only show build an ark if us
         <input type="email" class="form-control" v-model="location">
       </div>
       <div class="form-group">
+        <label>Dollar Serial Number:</label>
+        <input type="text" class="form-control" v-model="serial_num">
+      </div>
+      <div class="form-group">
         <label>Completed:</label>
         <input type="text" class="form-control" v-model="completed">
       </div>
@@ -313,54 +315,25 @@ both preferably without a button click  AND want to only show build an ark if us
         <input type="text" class="form-control" v-model="description">
       </div>
       <div class="form-group">
-        <label>image:</label> 
+        <label>Image:</label> 
         <input type="text" class="form-control" v-model="image">
       </div>
       <div class="form-group">
-        <label>location:</label> 
+        <label>Location:</label> 
         <input type="text" class="form-control" v-model="location">
       </div>
       <div class="form-group">
-        <label>completed:</label> 
+        <label>Dollar Serial Number: (optional but encouraged if you have a ARK bill someone gave you)</label> 
+        <input type="text" class="form-control" v-model="serial_num">
+      </div>
+      <div class="form-group">
+        <label>Completed (free form):</label> 
         <input type="text" class="form-control" v-model="completed">
       </div>
       <h2><a href="https://www.bradaronson.com/acts-of-kindness/">Please click 4 Ark Ideas!</a></h2>
 
       <button class="btn btn-primary" v-if="getUserId()" v-on:click="submit()">Submit</button>
     </div>
-  </div>
-</template>
-
-<template id="dollars-index-page">
-  <div class="vue-component">
-    <div class="row">
-          <div v-for="dollar in dollars" class="card col-4">
-            <img class="card-img-top" src="https://previews.123rf.com/images/chudtsankov/chudtsankov1703/chudtsankov170300147/74006241-cartoon-funny-face-with-dollar-eyes-and-smiling-expression-illustration-isolated-on-white-background.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{ dollar.serial_num }}</h5>
-            </div>
-            <button type="button" class="btn btn-primary" v-on:click="setCurrentDollar(dollar)">
-              More Info
-            </button>
-          </div>      
-        </div>
-    </div>
-</template>
-
-<template id="dollars-show-page">
-  <div class="vue-component">
-    <div v-for="ark in dollar.arks" class="card col-4">
-        <img class="card-img-top" :src="ark.image">
-        <div class="card-body">
-           <h5 class="card-title">{{ ark.description }}</h5>
-            <h5 class="card-title">{{ ark.location }}</h5>
-            <h5 class="card-title">{{ ark.created_at }}</h5>
-            <p>Dollar: {{ dollar.serial_num }}</p>  
-        </div>
-        <a class="btn btn-primary" v-if="ark.user_id == getUserId()" v-bind:href="'/#/users/' + ark.user_id">User Info</a>
-     </div> 
-     <a class="btn btn-primary" v-if="getUserId()" href="/#/arks/new">Build an Ark</a>  
-     <a class="btn btn-primary" v-bind:href="/#/">Home</a>
   </div>
 </template>
 

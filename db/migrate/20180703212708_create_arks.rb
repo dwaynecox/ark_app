@@ -5,8 +5,8 @@ class CreateArks < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :image
       t.string :location
-      t.integer :dollar_id
-
+      t.string :serial_num
+      t.string :completed
       t.timestamps
     end
   end

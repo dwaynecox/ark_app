@@ -1,12 +1,5 @@
 require 'unirest'
 
-# update dollar
-# params = {
-#  serial_num: "L12345678B"
-# }
-
-# response = Unirest.patch("http://localhost:3000/api/dollars/2", parameters: params).body
-
 #update ark
 # params = {
 #  image: "http://dekalbcounty.org/RNC/photos/05.jpg"
@@ -14,20 +7,15 @@ require 'unirest'
 
 # response = Unirest.patch("http://localhost:3000/api/arks/1", parameters: params).body
 
-
-
-#create dollar in rails then ark, ark requires dollar to exist, code appropriately later
-
-
-
 response = Unirest.post(
   "http://localhost:3000/api/arks",
   parameters: {
   description: "Turned around while walking home to hold door for restaurant delivery guy",
             user_id: 1,
             image: "",
+            serial_num: "runner bingo",
             location: "Papa Passeros, Westmont, IL"
-            # dollar_id: 1
+          
   }
 )
 p response.body
