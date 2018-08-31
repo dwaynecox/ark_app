@@ -13,13 +13,11 @@ class Api::ArksController < ApplicationController
 
   def create 
     if current_user
-      sn = params[:serial_num]
 
       @ark = Ark.new(
        description: params[:description],
        user_id: current_user.id,
        image: params[:image],
-       serial_num: sn,
        location: params[:location],
        completed: params[:completed]
        )
