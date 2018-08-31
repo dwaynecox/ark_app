@@ -17,8 +17,8 @@ class Api::ArksController < ApplicationController
        description: params[:description],
        user_id: current_user.id,
        image: params[:image],
-       location: params[:location],
        serial_num: params[:serial_num],
+       location: params[:location],
        completed: params[:completed]
        )
      
