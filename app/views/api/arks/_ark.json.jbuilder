@@ -1,9 +1,9 @@
 json.id ark.id
-json.description ark.description 
-json.serial_num ark.serial_num
-json.created_at ark.created_at 
-json.completed ark.completed 
+json.description ark.description
 json.user_id ark.user_id
 json.image ark.image
 json.location ark.location
+json.serial_num ark.serial_num
+json.created_at ark.created_at 
+json.completed ark.completed 
 json.user ark.user
